@@ -1,4 +1,4 @@
-[![Build Status](https://barradas.visualstudio.com/Contributions/_apis/build/status/NugetPackage/PagarMe%20SDK?branchName=develop)](https://barradas.visualstudio.com/Contributions/_build/latest?definitionId=21&branchName=develop)
+[![Build Status](https://barradas.visualstudio.com/Contributions/_apis/build/status/NugetPackage/PagarMe%20SDK?branchName=develop)](https://barradas.visualstudio.com/Contributions/_build/latest?definitionId=25&branchName=develop)
 [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=ThiagoBarradas_pagarme-dotnet&metric=alert_status)](https://sonarcloud.io/dashboard?id=ThiagoBarradas_pagarme-dotnet)
 [![NuGet Downloads](https://img.shields.io/nuget/dt/PagarMe.svg)](https://www.nuget.org/packages/PagarMe/)
 [![NuGet Version](https://img.shields.io/nuget/v/PagarMe.svg)](https://www.nuget.org/packages/PagarMe/)
