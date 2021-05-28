@@ -1,4 +1,6 @@
-﻿using PagarMe.Models.Request;
+﻿using System;
+using System.Collections.Generic;
+using PagarMe.Models.Request;
 using PagarMe.Models.Webhooks;
 using Newtonsoft.Json;
 
@@ -58,6 +60,11 @@ namespace PagarMe.ConsoleTest
                 Email = "teste2hj@gmail.com"
             };
             var createResult2 = client.Customer.CreateCustomer(createRequest2);
+            
+            //CreatePixOrder
+            var createPixOrder = new CreateOrderRequest();
+
+            var createPixResult = client.Order.CreateOrder("idempotency-key", createPixOrder); 
 
             //createResult.
 
