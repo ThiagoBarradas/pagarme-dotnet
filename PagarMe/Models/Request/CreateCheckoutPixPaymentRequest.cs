@@ -9,9 +9,9 @@ namespace PagarMe.Models.Request
     [JsonObject(NamingStrategyType = typeof(SnakeCaseNamingStrategy))]
     public class CreateCheckoutPixPaymentRequest
     {
-        public DateTime ExpiresAt { get; set; }
+        public DateTime? ExpiresAt { get; set; }
         
-        public int ExpiresIn { get; set; }
+        public int? ExpiresIn { get; set; }
         
         public List<PixAdditionalInformation> AdditionalInformation { get; set; }
     }
