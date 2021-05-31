@@ -17,6 +17,8 @@ namespace PagarMe.Models.Response
         public bool BillingAddressEditable { get; set; }
 
         public GetCheckoutBoletoPaymentResponse Boleto { get; set; }
+        
+        public GetCheckoutPixPaymentResponse Pix { get; set; }
 
         public DateTime? CanceledAt { get; set; }
 
