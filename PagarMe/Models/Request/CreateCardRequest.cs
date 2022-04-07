@@ -32,5 +32,7 @@ namespace PagarMe.Models.Request
         public bool PrivateLabel { get; set; }
 
         public string Type { get; set; } = "credit";
+
+        public string Label { get; set; }
     }
 }
