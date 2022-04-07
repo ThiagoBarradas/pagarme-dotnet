@@ -39,5 +39,7 @@ namespace PagarMe.Models.Response
         public string Type { get; set; }
 
         public DateTime UpdatedAt { get; set; }
+
+        public string Label { get; set; }
     }
 }
