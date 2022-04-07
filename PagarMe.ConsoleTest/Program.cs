@@ -1,7 +1,11 @@
-﻿using PagarMe.Models.Request;
+﻿using System;
+using System.Collections.Generic;
+using MongoDB.Bson;
+using PagarMe.Models.Request;
 using PagarMe.Models.Webhooks;
 using Newtonsoft.Json;
 using System.Collections.Generic;
+using PagarMe.Models.Commons;
 
 namespace PagarMe.ConsoleTest
 {
@@ -105,7 +109,18 @@ namespace PagarMe.ConsoleTest
             var createRequest = new CreateCustomerRequest()
             {
                 Name = "teste1hj",
-                Email = "teste1hj@gmail.com"
+                Email = "teste1hj@gmail.com",
+                Document = "25517991203",
+                Type = "individual",
+                Phones = new CreatePhonesRequest()
+                {
+                    HomePhone = new CreatePhoneRequest
+                    {
+                        AreaCode = "21",
+                        CountryCode = "55",
+                        Number = "98761234"
+                    }
+                }
             };
             var createResult = client.Customer.CreateCustomer(createRequest);
 
@@ -117,9 +132,94 @@ namespace PagarMe.ConsoleTest
                 Email = "teste2hj@gmail.com"
             };
             var createResult2 = client.Customer.CreateCustomer(createRequest2);
-
+            
+            //CreatePixOrder
+            var createPixOrder = new CreateOrderRequest
+            {
+                AntifraudEnabled = false,
+                Closed = false,
+                Code = "or_123",
+                Currency = "BRL",
+                Customer = createRequest,
+                CustomerId = null,
+                Device = new CreateDeviceRequest(),
+                Ip = null,
+                Items = new List<CreateOrderItemRequest>
+                {
+                    new CreateOrderItemRequest
+                    {
+                        Amount = 10000,
+                        Category = "beleza",
+                        Code = "pro_123",
+                        Description = "maquiagem",
+                        Quantity = 1,
+                        Seller = null,
+                        SellerId = null
+                    }
+                },
+                Location = null,
+                Metadata = new Dictionary<string, string>(),
+                Payments = new List<CreatePaymentRequest>()
+                {
+                    new CreatePaymentRequest
+                    {
+                        Amount = 10000,
+                        BankTransfer = null,
+                        Boleto = null,
+                        Cash = null,
+                        Checkout = new CreateCheckoutPaymentRequest
+                        {
+                            AcceptedMultiPaymentMethods = null, 
+                            AcceptedPaymentMethods = new List<string>{"pix"},
+                            AcceptedBrands = null,
+                            BankTransfer = null,
+                            BillingAddress = null,
+                            BillingAddressEditable = false,
+                            Boleto = null,
+                            CreditCard = null,
+                            Voucher = null,
+                            CustomerEditable = null,
+                            DebitCard = null,
+                            Pix = new CreateCheckoutPixPaymentRequest
+                            {
+                                ExpiresAt = null,
+                                ExpiresIn = 600,
+                                AdditionalInformation = new List<PixAdditionalInformation>()
+                                {
+                                    new PixAdditionalInformation()
+                                    {
+                                        Name = "Mensagem",
+                                        Value = "Esta é uma mensagem do checkout"
+                                    }
+                                }
+                            },
+                            DefaultPaymentMethod = "Pix",
+                            ExpiresIn = 900,
+                            GatewayAffiliationId = null,
+                            SkipCheckoutSuccessPage = false,
+                            SuccessUrl = null
+                        },
+                        CreditCard = null,
+                        Currency = null,
+                        Customer = null,
+                        CustomerId = null,
+                        DebitCard = null,
+                        GatewayAffiliationId = "123",
+                        Metadata = null,
+                        PaymentMethod = "checkout",
+                        Split = null,
+                        Voucher = null
+                    }
+                },
+                SessionId = "123",
+                Shipping = null
+            };
+            
+            client.UpdateConfiguration(secretKey: "sk_test_mQwZzeT51CgEo3qv");
+            var createPixResult = client.Order.CreateOrder(null, createPixOrder); 
+            
             //createResult.
-
+            
             // Get1
             var getResult1 = client.Customer.GetCustomer(createResult.Data.Id);
 

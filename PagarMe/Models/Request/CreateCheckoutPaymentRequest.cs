@@ -28,6 +28,8 @@ namespace PagarMe.Models.Request
         public bool? CustomerEditable { get; set; }
 
         public CreateCheckoutDebitCardPaymentRequest DebitCard { get; set; }
+        
+        public CreateCheckoutPixPaymentRequest Pix { get; set; }
 
         public string DefaultPaymentMethod { get; set; }
 
