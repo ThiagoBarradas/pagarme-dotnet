@@ -21,7 +21,7 @@ namespace PagarMe.ConsoleTest
             {
                 AccountManagementKey = "amk",
                 MpToken = "token",
-                SecretKey = "sk_test_zL1YeWiWqfrx5GgZ",
+                SecretKey = "sk",
                 RequestKey = "rk"
             };
 
